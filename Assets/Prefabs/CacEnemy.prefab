@@ -314,8 +314,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 1548157668606586, guid: c4993e0944e38a642b5bd3906785dcf8,
     type: 2}
-  shootingRange: 1.5
-  fireRate: 1
+  shootingRange: 2
+  fireRate: 1.5
   health: 100
 --- !u!136 &136881505152555618
 CapsuleCollider:

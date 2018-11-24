@@ -56,7 +56,6 @@ public abstract class EnemyAI : MonoBehaviour {
         // Si on est à distance pour shooter et que notre fire rate est ok
         if (Vector3.Distance(transform.position, objective.transform.position) < enemy.shootingRange && timeSinceLastFire >= enemy.fireRate)
         {
-            Debug.Log("fire");
             Instantiate(enemy.bulletPrefab, weaponFireStart.transform.position, weapon.transform.rotation);
 
             timeSinceLastFire = 0.0f;
