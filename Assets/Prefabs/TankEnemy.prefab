@@ -41,10 +41,11 @@ GameObject:
   - component: {fileID: 23713559344189644}
   - component: {fileID: 136601757222244954}
   - component: {fileID: 195204473770444448}
-  - component: {fileID: 114437296887177408}
+  - component: {fileID: 114489631334468416}
+  - component: {fileID: 114712388259046284}
   m_Layer: 0
-  m_Name: Ennemy
-  m_TagString: Ennemy
+  m_Name: TankEnemy
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -287,7 +288,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114437296887177408
+--- !u!114 &114489631334468416
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -295,13 +296,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 1095544029268408}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc268dc513db0e04aa86bb3bc2e5f59f, type: 3}
+  m_Script: {fileID: 11500000, guid: f0bed0aa714d50445ab92dba2c2dcc46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 1359948647173200, guid: 706b917d1dfb3f4469594df9dc3f76a7,
+    type: 2}
+  shootingRange: 5
+  fireRate: 1.5
+  health: 200
+--- !u!114 &114712388259046284
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1095544029268408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cc4a196df65cbc42a659db6db91593b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   weaponFireStart: {fileID: 1449214137901538}
   weapon: {fileID: 1075993140431498}
-  bulletPrefab: {fileID: 1359948647173200, guid: 706b917d1dfb3f4469594df9dc3f76a7,
-    type: 2}
 --- !u!136 &136601757222244954
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -324,9 +339,9 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 4
+  m_Speed: 3
   m_Acceleration: 8
-  avoidancePriority: 50
+  avoidancePriority: 2
   m_AngularSpeed: 120
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
