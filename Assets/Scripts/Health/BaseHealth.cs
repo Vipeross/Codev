@@ -29,6 +29,9 @@ public class BaseHealth : Health {
 		Debug.Log("Damage taken : " + amount + " / Health remaining : " + currentHealth);
 
 		if (currentHealth <= 0)
+		{
 			Debug.Log("Game Over");
+			isDestroyed = true;
+		}
 	}
 }

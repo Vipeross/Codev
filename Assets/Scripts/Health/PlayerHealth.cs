@@ -29,7 +29,10 @@ public class PlayerHealth : Health
 
         Debug.Log("Damage taken : " + amount + " / Health remaining : " + currentHealth);
 
-        if (currentHealth <= 0)
+		if (currentHealth <= 0)
+		{
 			Debug.Log("You jut die");
+			isDead = true;
+		}
     }
 }
