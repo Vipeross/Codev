@@ -17,6 +17,7 @@ public class GameManagement : MonoBehaviour {
     void Start () {
         numberOfSpawns = GameObject.FindGameObjectsWithTag("Respawn").Length;
         numberOfEnemyPrefab = EnemyPrefabs.Length;
+
 		enemyCount = GameObject.Find("EnemyCount").GetComponent<Text>();
 	}
 	
