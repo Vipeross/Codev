@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class FastBullet : Bullet
 {
-    private float speed = 20.0f;
-    private float timeToLive = 1.0f;
-    private int damageOnPlayer = 15;
-    private int damageOnBase = 15;
+    private void Start()
+    {
+        speed = 20.0f;
+        timeToLive = 1.0f;
+        damageOnPlayer = 15;
+        damageOnBase = 15;
+    }
 }

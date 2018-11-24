@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class DistanceBullet : Bullet
 {
-    private float speed = 15.0f;
-    private float timeToLive = 1.0f;
-    private int damageOnPlayer = 5;
-    private int damageOnBase = 5;
+    private void Start()
+    {
+        speed = 15.0f;
+        timeToLive = 1.0f;
+        damageOnPlayer = 5;
+        damageOnBase = 5;
+    }
 }

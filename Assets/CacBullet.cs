@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class CacBullet : Bullet
 {
-    private float speed = 15.0f;
-    private float timeToLive = 1.0f;
-    private int damageOnPlayer = 50;
-    private int damageOnBase = 40;
+    private void Start()
+    {
+        speed = 15.0f;
+        timeToLive = 1.0f;
+        damageOnPlayer = 50;
+        damageOnBase = 40;
+    }
 }
