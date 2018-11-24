@@ -484,6 +484,21 @@ MonoBehaviour:
   flySpeed: 4
   sprintFactor: 2
   flyMaxVerticalAngle: 60
+--- !u!114 &330811575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 330811567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88d0afdfbeff97242b55acac494fc318, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHealth: 0
+  currentHealth: 0
+  healthSlider: {fileID: 0}
+  attackValue: 0
 --- !u!1001 &340090831
 Prefab:
   m_ObjectHideFlags: 0
