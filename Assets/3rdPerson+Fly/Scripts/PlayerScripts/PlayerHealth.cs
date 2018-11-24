@@ -2,15 +2,13 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class PlayerHealth : MonoBehaviour
+public class PlayerHealth : Health
 {
 	public Slider healthSlider;
 
-    private int startingHealth = 200;
-    private int currentHealth;
-
     void Awake()
 	{
+		startingHealth = 200;
 		// Problème : Mon slider ne se trouve pas directement dans mon GameObject, je le cherche donc
 		if (healthSlider == null)
 		{
@@ -24,9 +22,9 @@ public class PlayerHealth : MonoBehaviour
 		currentHealth = startingHealth;
 	}
     
-	public void TakeDamage(int amount)
+	public new void TakeDamage(int amount)
 	{
-		currentHealth -= amount;
+		base.TakeDamage(amount);
 		healthSlider.value = currentHealth;
 
         Debug.Log("Damage taken : " + amount + " / Health remaining : " + currentHealth);
