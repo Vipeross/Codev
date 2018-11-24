@@ -27,6 +27,9 @@ public class BaseHealth : Health {
 		healthSlider.value = currentHealth;
         
 		if (currentHealth <= 0)
+		{
 			Debug.Log("Game Over");
+			isDestroyed = true;
+		}
 	}
 }

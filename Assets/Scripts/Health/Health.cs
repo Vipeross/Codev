@@ -6,10 +6,13 @@ public class Health : MonoBehaviour {
 
 	protected int startingHealth;
 	protected int currentHealth;
+	protected bool isDestroyed;
+	protected bool isDead;
 
 	// Use this for initialization
 	void Start () {
-		
+		isDestroyed = false;
+		isDead = false;
 	}
 	
 	// Update is called once per frame
@@ -20,5 +23,15 @@ public class Health : MonoBehaviour {
 	public void TakeDamage(int amount)
 	{
 		currentHealth -= amount;
+	}
+
+	public bool Destroyed()
+	{
+		return isDestroyed;
+	}
+
+	public bool Dead()
+	{
+		return isDead;
 	}
 }

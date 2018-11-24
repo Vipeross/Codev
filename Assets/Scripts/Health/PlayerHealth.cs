@@ -26,8 +26,11 @@ public class PlayerHealth : Health
 	{
 		base.TakeDamage(amount);
 		healthSlider.value = currentHealth;
-
-        if (currentHealth <= 0)
+        
+		if (currentHealth <= 0)
+		{
 			Debug.Log("You jut die");
+			isDead = true;
+		}
     }
 }
