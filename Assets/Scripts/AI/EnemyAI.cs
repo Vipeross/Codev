@@ -12,22 +12,23 @@ public abstract class EnemyAI : MonoBehaviour {
     protected GameObject objective;
     protected GameObject player;
     protected GameObject basement;
+    protected NavMeshAgent agent;
 
     private float timeSinceLastFire = 0.0f;
     private GameObject bullet;
-    
-    private NavMeshAgent agent;
 
     // Use this for initialization
-    protected void Start () {
+    void Start () {
         agent = GetComponent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player");
         basement = GameObject.FindGameObjectWithTag("Base");
         enemy = gameObject.GetComponent<Enemy>();
+
+        chooseObjective();
     }
 	
 	// Update is called once per frame
-	protected void Update () {
+	void Update () {
         chooseObjective();
         movement();
         fire();

@@ -11,7 +11,16 @@ public class RushCloserAI : EnemyAI
     {
         distanceToPlayer = Vector3.Distance(gameObject.transform.position, player.transform.position);
         distanceToBasement = Vector3.Distance(gameObject.transform.position, basement.transform.position);
+       
+        UnityEngine.AI.NavMeshPath nav = new UnityEngine.AI.NavMeshPath();
 
-        objective = distanceToPlayer > distanceToBasement ? basement : player;
+        Debug.Log("agent.CalculatePath(player.transform.position, nav) : " + agent.CalculatePath(player.transform.position, nav));
+
+        // S'il n'a pas le chemin pour aller au joueur, il va focus la base quoi qu'il arrive
+        if (distanceToPlayer < distanceToBasement && agent.CalculatePath(player.transform.position, nav))
+            objective = player;
+        else
+            objective = basement;
+
     }
 }

@@ -25,9 +25,7 @@ public class BaseHealth : Health {
 	{
 		base.TakeDamage(amount);
 		healthSlider.value = currentHealth;
-
-		Debug.Log("Damage taken : " + amount + " / Health remaining : " + currentHealth);
-
+        
 		if (currentHealth <= 0)
 			Debug.Log("Game Over");
 	}
