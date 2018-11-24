@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class GameManagement : MonoBehaviour {
+public class GameManagement : MonoBehaviour
+{
 
     public GameObject[] EnemyPrefabs = new GameObject[4];
 
@@ -9,25 +10,27 @@ public class GameManagement : MonoBehaviour {
     private float timeSinceLastSpawn = 0.0f;
     private int numberOfSpawns;
     private int numberOfEnemyPrefab;
-	private int enemiesLeft = 0;
+    private int enemiesLeft = 0;
 
-	Text enemyCount;
+    Text enemyCount;
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         numberOfSpawns = GameObject.FindGameObjectsWithTag("Respawn").Length;
         numberOfEnemyPrefab = EnemyPrefabs.Length;
 
-		enemyCount = GameObject.Find("EnemyCount").GetComponent<Text>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
+        enemyCount = GameObject.Find("EnemyCount").GetComponent<Text>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
         spawn();
-		GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-		enemiesLeft = enemies.Length;
-		enemyCount.text = "Ennemis Restant : " + enemiesLeft;
-	}
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        enemiesLeft = enemies.Length;
+        enemyCount.text = "Ennemis Restant : " + enemiesLeft;
+    }
 
     void spawn()
     {

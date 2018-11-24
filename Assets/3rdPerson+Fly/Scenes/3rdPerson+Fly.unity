@@ -1308,9 +1308,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemyPrefabs:
-  - {fileID: 1095544029268408, guid: bfa96f9b7fd9ffa498ed982dc94d82b6, type: 2}
-  - {fileID: 1095544029268408, guid: bfa96f9b7fd9ffa498ed982dc94d82b6, type: 2}
-  - {fileID: 1095544029268408, guid: bfa96f9b7fd9ffa498ed982dc94d82b6, type: 2}
+  - {fileID: 1026364864259326, guid: 6d7ccbd092a5fc14e9878b3217f6b7a4, type: 2}
+  - {fileID: 1613552974686038, guid: 4652dfbc28573dd4abcfe9d7b7d3f7de, type: 2}
+  - {fileID: 1238208359893766, guid: ac8894c05511daa4fabafb0123defebd, type: 2}
   - {fileID: 1095544029268408, guid: bfa96f9b7fd9ffa498ed982dc94d82b6, type: 2}
 --- !u!4 &914599125
 Transform:
