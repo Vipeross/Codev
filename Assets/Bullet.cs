@@ -30,7 +30,7 @@ public class Bullet : MonoBehaviour {
         else if (other.tag.Equals("Base"))
         {
             Debug.Log("Base touchée !");
-            //GameObject.FindGameObjectWithTag("Base").GetComponent<BaseHealth>().TakeDamage(damageOnBase);
+            GameObject.FindGameObjectWithTag("Base").GetComponent<BaseHealth>().TakeDamage(damageOnBase);
         }
 
         // Si la balle touche un obstacle on la détruit

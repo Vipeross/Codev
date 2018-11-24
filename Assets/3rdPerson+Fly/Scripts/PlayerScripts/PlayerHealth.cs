@@ -12,7 +12,7 @@ public class PlayerHealth : Health
 		// Problème : Mon slider ne se trouve pas directement dans mon GameObject, je le cherche donc
 		if (healthSlider == null)
 		{
-			GameObject go = GameObject.Find("HealthSlider");
+			GameObject go = GameObject.Find("PlayerHealthSlider");
 			if (go != null)
 			{
 				healthSlider = go.GetComponent<Slider>();
