@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour {
 
-    private float speed = 15.0f;
-    private float timeToLive = 1.0f;
-    private int damageOnPlayer = 10;
-    private int damageOnBase = 10;
+    private float speed;
+    private float timeToLive;
+    private int damageOnPlayer;
+    private int damageOnBase;
 
 	// Use this for initialization
 	void Start () {

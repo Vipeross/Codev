@@ -12,14 +12,14 @@ public class PlayerHealth : MonoBehaviour
     void Awake()
 	{
 		// Problème : Mon slider ne se trouve pas directement dans mon GameObject, je le cherche donc
-		/*if (healthSlider == null)
+		if (healthSlider == null)
 		{
 			GameObject go = GameObject.Find("HealthSlider");
 			if (go != null)
 			{
 				healthSlider = go.GetComponent<Slider>();
 			}
-		}*/
+		}
 
 		currentHealth = startingHealth;
 	}
@@ -27,7 +27,7 @@ public class PlayerHealth : MonoBehaviour
 	public void TakeDamage(int amount)
 	{
 		currentHealth -= amount;
-		//healthSlider.value = currentHealth;
+		healthSlider.value = currentHealth;
 
         Debug.Log("Damage taken : " + amount + " / Health remaining : " + currentHealth);
 
