@@ -32,8 +32,6 @@ public class MouseAimCamera : MonoBehaviour {
         {
             currentOffset = aimOffset;
             currentAngleOffset = aimOffsetAngle;
-            
-            Debug.Log("ça vise");
         }
         else
         {
