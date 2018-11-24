@@ -34,8 +34,11 @@ public class EnnemyAI : MonoBehaviour {
     {
         transform.LookAt(objective.GetComponent<Collider>().bounds.center);
 
+        // Si on est à distance de shoot l'objectif, on arrête de bouger
         if (Vector3.Distance(transform.position, objective.transform.position) < shootingRange)
             agent.destination = transform.position;
+
+        // Sinon on va vers l'objectif
         else
             agent.destination = objective.transform.position;
     }
@@ -44,9 +47,9 @@ public class EnnemyAI : MonoBehaviour {
     {
         timeSinceLastFire += Time.deltaTime;
 
+        // Si on est à distance pour shooter et que notre fire rate est ok
         if (Vector3.Distance(transform.position, objective.transform.position) < shootingRange && timeSinceLastFire >= fireRate)
         {
-
             Instantiate(bulletPrefab, weaponFireStart.transform.position, weapon.transform.rotation);
 
             timeSinceLastFire = 0.0f;
