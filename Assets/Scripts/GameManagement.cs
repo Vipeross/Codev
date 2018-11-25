@@ -23,8 +23,8 @@ public class GameManagement : MonoBehaviour
 	// Use this for initialization
 	void Start()
     {
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        /*Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;*/
 
         numberOfSpawns = GameObject.FindGameObjectsWithTag("Respawn").Length;
         numberOfEnemyPrefab = EnemyPrefabs.Length;
@@ -38,13 +38,13 @@ public class GameManagement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Escape)) {
+        /*if (Input.GetKey(KeyCode.Escape)) {
 			SwitchCursor(true);
         }
         if ((Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1)) && Cursor.lockState != CursorLockMode.Locked && Cursor.visible == true)
         {
 			SwitchCursor(false);
-        }
+        }*/
 
         spawn();
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");

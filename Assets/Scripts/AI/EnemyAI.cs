@@ -43,11 +43,11 @@ public abstract class EnemyAI : MonoBehaviour {
 
         // Si on est à distance de shoot l'objectif, on arrête de bouger
         if (Vector3.Distance(transform.position, objective.transform.position) < enemy.shootingRange)
-            agent.destination = transform.position;
+            agent.SetDestination(transform.position);
 
         // Sinon on va vers l'objectif
         else
-            agent.destination = objective.transform.position;
+            agent.SetDestination(objective.transform.position);
     }
 
     void fire ()
