@@ -16,6 +16,7 @@ public class GameManagement : MonoBehaviour
 	private GameObject baseObject;
 	private GameObject playerObject;
 
+    public GameObject HUD;
 	public Text enemyCount;
 	public GameObject screenPanel;
 	public Text finalText;
@@ -23,33 +24,35 @@ public class GameManagement : MonoBehaviour
 	// Use this for initialization
 	void Start()
     {
-        /*Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;*/
+        // UI
+        HUD.SetActive(true);
+        enemyCount = GameObject.Find("EnemyCount").GetComponent<Text>();
+        baseObject = GameObject.FindGameObjectWithTag("Base");
+        playerObject = GameObject.FindGameObjectWithTag("Player");
+
+        SwitchCursor(false);
 
         numberOfSpawns = GameObject.FindGameObjectsWithTag("Respawn").Length;
         numberOfEnemyPrefab = EnemyPrefabs.Length;
-
-        enemyCount = GameObject.Find("EnemyCount").GetComponent<Text>();
-		screenPanel.SetActive(false);
-		baseObject = GameObject.FindGameObjectWithTag("Base");
-		playerObject = GameObject.FindGameObjectWithTag("Player");
 	}
 
     // Update is called once per frame
     void Update()
     {
-        /*if (Input.GetKey(KeyCode.Escape)) {
+        // Gestion de la souris
+        if (Input.GetKey(KeyCode.Escape))
 			SwitchCursor(true);
-        }
         if ((Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1)) && Cursor.lockState != CursorLockMode.Locked && Cursor.visible == true)
-        {
 			SwitchCursor(false);
-        }*/
 
         spawn();
+
+        // Nombre d'ennemis restants
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         enemiesLeft = enemies.Length;
         enemyCount.text = "Ennemis Restant : " + enemiesLeft;
+
+        // Gestion de la vie de la base et du joueur
 		if (baseObject.GetComponent<BaseHealth>().Destroyed())
 			GameOver("Base détruite");
 		else if (playerObject.GetComponent<PlayerHealth>().Dead())

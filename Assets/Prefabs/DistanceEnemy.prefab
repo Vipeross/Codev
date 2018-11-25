@@ -58,6 +58,7 @@ GameObject:
   - component: {fileID: 195839193999303998}
   - component: {fileID: 114467261951048468}
   - component: {fileID: 114386165596364598}
+  - component: {fileID: 114340396041737202}
   m_Layer: 0
   m_Name: DistanceEnemy
   m_TagString: Enemy
@@ -288,6 +289,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114340396041737202
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1613552974686038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b766ca39916707349b7f400ccb0b59c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114386165596364598
 MonoBehaviour:
   m_ObjectHideFlags: 1

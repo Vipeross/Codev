@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 195223914103061860}
   - component: {fileID: 114456330680257936}
   - component: {fileID: 114844165882182732}
+  - component: {fileID: 114821023866884704}
   m_Layer: 0
   m_Name: FastEnemy
   m_TagString: Enemy
@@ -304,6 +305,17 @@ MonoBehaviour:
   shootingRange: 5
   fireRate: 0.7
   health: 50
+--- !u!114 &114821023866884704
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1238208359893766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b766ca39916707349b7f400ccb0b59c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114844165882182732
 MonoBehaviour:
   m_ObjectHideFlags: 1

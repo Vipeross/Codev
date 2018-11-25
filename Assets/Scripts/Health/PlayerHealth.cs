@@ -9,28 +9,34 @@ public class PlayerHealth : Health
     void Awake()
 	{
 		startingHealth = 200;
-		// Problème : Mon slider ne se trouve pas directement dans mon GameObject, je le cherche donc
-		if (healthSlider == null)
-		{
-			GameObject go = GameObject.Find("PlayerHealthSlider");
-			if (go != null)
-			{
-				healthSlider = go.GetComponent<Slider>();
-			}
-		}
+        findHealthSlider();
 
-		currentHealth = startingHealth;
+        currentHealth = startingHealth;
 	}
     
 	public new void TakeDamage(int amount)
 	{
 		base.TakeDamage(amount);
-		healthSlider.value = currentHealth;
+
+        findHealthSlider();
+        healthSlider.value = currentHealth;
         
 		if (currentHealth <= 0)
 		{
 			Debug.Log("You jut die");
 			isDead = true;
 		}
+    }
+
+    void findHealthSlider ()
+    {
+        if (healthSlider == null)
+        {
+            GameObject go = GameObject.Find("PlayerHealthSlider");
+            if (go != null)
+            {
+                healthSlider = go.GetComponent<Slider>();
+            }
+        }
     }
 }

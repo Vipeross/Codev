@@ -19,6 +19,8 @@ public class EnemyHealth : Health {
 	{
 		base.TakeDamage(amount);
 
+        Debug.Log("Dégats infligés : " + amount + " / Vie restante : " + currentHealth);
+
 		if (currentHealth <= 0)
 		{
 			Debug.Log("You kill this enemy");
