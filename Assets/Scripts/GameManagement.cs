@@ -24,6 +24,7 @@ public class GameManagement : MonoBehaviour
 	// Use this for initialization
 	void Start()
     {
+        Time.timeScale = 1.0f;
         // UI
         HUD.SetActive(true);
         enemyCount = GameObject.Find("EnemyCount").GetComponent<Text>();
