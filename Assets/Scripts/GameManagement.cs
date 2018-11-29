@@ -1,23 +1,28 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 public class GameManagement : MonoBehaviour
 {
 
     public GameObject[] EnemyPrefabs = new GameObject[4];
-
+    public int[] waves;
     private float spawnFrequency = 10.0f;
     private float timeSinceLastSpawn = 0.0f;
     private int numberOfSpawns;
     private int numberOfEnemyPrefab;
+    private int enemiesLeftHUD = 0;
     private int enemiesLeft = 0;
+    private int waveNumber = 0;
+    private float rate;
 
-	private GameObject baseObject;
+    private GameObject baseObject;
 	private GameObject playerObject;
 
     public GameObject HUD;
 	public Text enemyCount;
+    public Text waveHUD;
 	public GameObject screenPanel;
 	public Text finalText;
 
@@ -28,6 +33,7 @@ public class GameManagement : MonoBehaviour
         // UI
         HUD.SetActive(true);
         enemyCount = GameObject.Find("EnemyCount").GetComponent<Text>();
+        waveHUD = GameObject.Find("Wave").GetComponent<Text>();
         baseObject = GameObject.FindGameObjectWithTag("Base");
         playerObject = GameObject.FindGameObjectWithTag("Player");
 
@@ -35,7 +41,9 @@ public class GameManagement : MonoBehaviour
 
         numberOfSpawns = GameObject.FindGameObjectsWithTag("Respawn").Length;
         numberOfEnemyPrefab = EnemyPrefabs.Length;
-	}
+        rate = 1.0f / (0.05f * (waveNumber + 1));
+        enemiesLeft = waves[waveNumber];
+    }
 
     // Update is called once per frame
     void Update()
@@ -49,12 +57,15 @@ public class GameManagement : MonoBehaviour
         spawn();
 
         // Nombre d'ennemis restants
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        enemiesLeft = enemies.Length;
+        //GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        //enemiesLeftHUD = enemies.Length;
+        Debug.Log(rate);
         enemyCount.text = "Ennemis Restant : " + enemiesLeft;
+        waveHUD.text = "Vague " + (waveNumber + 1);
+        rate = 1.0f / (0.05f * waveNumber + 1);
 
         // Gestion de la vie de la base et du joueur
-		if (baseObject.GetComponent<BaseHealth>().Destroyed())
+        if (baseObject.GetComponent<BaseHealth>().Destroyed())
 			GameOver("Base détruite");
 		else if (playerObject.GetComponent<PlayerHealth>().Dead())
 			GameOver("Joueur mort");
@@ -70,8 +81,8 @@ public class GameManagement : MonoBehaviour
     void spawn()
     {
         timeSinceLastSpawn += Time.deltaTime;
-
-        if (timeSinceLastSpawn >= spawnFrequency)
+        
+        if (timeSinceLastSpawn >= rate && enemiesLeft > 0)
         {
             int chosenSpawn = Random.Range(0, numberOfSpawns);
             int chosenEnemyPrefab = Random.Range(0, numberOfEnemyPrefab);
@@ -80,6 +91,12 @@ public class GameManagement : MonoBehaviour
             Instantiate(EnemyPrefabs[chosenEnemyPrefab], spawner.transform.position, spawner.transform.rotation);
 
             timeSinceLastSpawn = 0;
+            enemiesLeft--;
+        }
+        if (enemiesLeft == 0 && waveNumber < waves.Length)
+        {
+            waveNumber++;
+            enemiesLeft = waves[waveNumber];
         }
     }
 
