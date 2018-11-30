@@ -10,6 +10,8 @@ public class GameManagement : MonoBehaviour
 
     public GameObject[] EnemyPrefabs = new GameObject[4];
     private float timeSinceLastSpawn = 0.0f;
+    private float waveDuration = 0.0f;
+    private float gameTime = 0.0f;
     private int numberOfSpawns;
     private int numberOfEnemyPrefab;
     private int enemiesTotal = 0;
@@ -21,13 +23,13 @@ public class GameManagement : MonoBehaviour
 	private GameObject playerObject;
 
     public GameObject HUD;
-	public Text enemyCount;
-    public Text waveHUD;
-	public GameObject screenPanel;
+    private Text enemyCount;
+    private Text waveHUD;
+    public GameObject screenPanel;
 	public Text finalText;
+    private Text waveTimer;
     public int waves;
-
-    Random rdn;
+    
 	// Use this for initialization
 	void Start()
     {
@@ -36,6 +38,7 @@ public class GameManagement : MonoBehaviour
         HUD.SetActive(true);
         enemyCount = GameObject.Find("EnemyCount").GetComponent<Text>();
         waveHUD = GameObject.Find("Wave").GetComponent<Text>();
+        waveTimer = GameObject.Find("WaveTimer").GetComponent<Text>();
         baseObject = GameObject.FindGameObjectWithTag("Base");
         playerObject = GameObject.FindGameObjectWithTag("Player");
 
@@ -43,9 +46,10 @@ public class GameManagement : MonoBehaviour
 
         numberOfSpawns = GameObject.FindGameObjectsWithTag("Respawn").Length;
         numberOfEnemyPrefab = EnemyPrefabs.Length;
-        rate = 20.0f;
-        enemiesTotal = 3 * waveNumber + Random.Range(0, waveNumber / 2);
-        enemiesLeft = enemiesTotal;
+        rate = 1.0f / (0.05f * waveNumber);
+        if (rate > 10)
+            rate = 10.0f;
+        WaveUpdate();
     }
 
     // Update is called once per frame
@@ -59,9 +63,12 @@ public class GameManagement : MonoBehaviour
 
         spawn();
 
-        // Nombre d'ennemis restants
+        // Gestion HUD
+        string minutes = Mathf.Floor(gameTime / 60).ToString("00");
+        string seconds = (gameTime % 60).ToString("00");
         enemyCount.text = "Ennemis Restants : " + enemiesLeft + "/" + enemiesTotal;
-        waveHUD.text = "Vague " + waveNumber;
+        waveHUD.text = "Vague " + waveNumber + "/" + waves;
+        waveTimer.text = minutes + ":" + seconds;
         rate = 1.0f / (0.05f * waveNumber);
         if (rate > 10)
             rate = 10.0f;
@@ -83,6 +90,7 @@ public class GameManagement : MonoBehaviour
     void spawn()
     {
         timeSinceLastSpawn += Time.deltaTime;
+        gameTime -= Time.deltaTime;
         
         if (timeSinceLastSpawn >= rate && enemiesLeft > 0)
         {
@@ -95,11 +103,10 @@ public class GameManagement : MonoBehaviour
             timeSinceLastSpawn = 0;
             enemiesLeft--;
         }
-        if (enemiesLeft == 0 && waveNumber <= waves)
+        if (enemiesLeft == 0 && waveNumber <= waves && gameTime <= 0.1f)
         {
             waveNumber++;
-            enemiesTotal = 3 * waveNumber + Random.Range(0, waveNumber/2);
-            enemiesLeft = enemiesTotal;
+            WaveUpdate();
         }
     }
 
@@ -120,4 +127,15 @@ public class GameManagement : MonoBehaviour
 	{
 		Application.Quit();
 	}
+
+    void WaveUpdate()
+    {
+        enemiesTotal = 3 * waveNumber + Random.Range(0, waveNumber / 2);
+        enemiesLeft = enemiesTotal;
+        waveDuration = enemiesTotal * (Math.Max(8.0f, rate)) + 20;
+        gameTime = waveDuration;
+        rate = 1.0f / (0.05f * waveNumber);
+        if (rate > 10)
+            rate = 10.0f;
+    }
 }
