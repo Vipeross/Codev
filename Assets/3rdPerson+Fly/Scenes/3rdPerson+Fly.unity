@@ -2486,12 +2486,12 @@ MonoBehaviour:
   - {fileID: 1613552974686038, guid: 4652dfbc28573dd4abcfe9d7b7d3f7de, type: 2}
   - {fileID: 1238208359893766, guid: ac8894c05511daa4fabafb0123defebd, type: 2}
   - {fileID: 1095544029268408, guid: bfa96f9b7fd9ffa498ed982dc94d82b6, type: 2}
-  waves: 0300000004000000050000000600000007000000
   HUD: {fileID: 2098753842}
   enemyCount: {fileID: 1577717597}
   waveHUD: {fileID: 0}
   screenPanel: {fileID: 1537930517}
   finalText: {fileID: 827813652}
+  waves: 5
 --- !u!4 &914599125
 Transform:
   m_ObjectHideFlags: 0
@@ -9167,7 +9167,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 300, y: 30}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &1577717597
 MonoBehaviour:

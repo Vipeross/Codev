@@ -24,12 +24,10 @@ public class Bullet : MonoBehaviour {
         // Si on touche le joueur ou la base, on applique les dégats à l'entité touchée
         if (other.tag.Equals("Player"))
         {
-            Debug.Log("Joueur touché !");
             GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>().TakeDamage(damageOnPlayer);
         }
         else if (other.tag.Equals("Base"))
         {
-            Debug.Log("Base touchée !");
             GameObject.FindGameObjectWithTag("Base").GetComponent<BaseHealth>().TakeDamage(damageOnBase);
         }
 

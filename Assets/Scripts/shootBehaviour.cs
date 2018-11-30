@@ -24,7 +24,6 @@ public class shootBehaviour : MonoBehaviour {
             if(Physics.Raycast(shoot,out hit))
             {
                 GameObject target = hit.collider.gameObject;
-                Debug.Log("target : " + target.tag + " name : " + target.name);
                 if(target.tag == "Enemy")
                     target.GetComponent<EnemyHealth>().TakeDamage(damage);
             }

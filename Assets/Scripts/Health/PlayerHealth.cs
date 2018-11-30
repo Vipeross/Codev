@@ -25,11 +25,8 @@ public class PlayerHealth : Health
         
 		if (currentHealth <= 0)
 		{
-			Debug.Log("You jut die");
             anim.SetTrigger("Death");
-            
             isDead = true;
-            
 		}
     }
 

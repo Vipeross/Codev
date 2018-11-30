@@ -28,7 +28,6 @@ public class BaseHealth : Health {
         
 		if (currentHealth <= 0)
 		{
-			Debug.Log("Game Over");
 			isDestroyed = true;
 		}
 	}
