@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f695a9ff75332524eb4a973993a8ff38
+guid: 6596e5d95e19dca4fb1c7b1b0192699d
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -135,7 +135,7 @@ ModelImporter:
     400126: mixamorig:Spine1
     400128: mixamorig:Spine2
     400130: //RootNode
-    7400000: strafe_right
+    7400000: run_backward_right
     9500000: //RootNode
   externalObjects: {}
   materials:
@@ -166,10 +166,10 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: strafe_right
+      name: run_backward_right
       takeName: mixamo.com
       firstFrame: 0
-      lastFrame: 43
+      lastFrame: 15
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

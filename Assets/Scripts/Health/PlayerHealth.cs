@@ -25,7 +25,6 @@ public class PlayerHealth : Health
         
 		if (currentHealth <= 0)
 		{
-            anim.SetTrigger("Death");
             isDead = true;
 		}
     }
