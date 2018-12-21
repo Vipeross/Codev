@@ -7,9 +7,11 @@ public class Shooter : MonoBehaviour {
 
     [SerializeField] float fireRate;
     [SerializeField] AssaultRiffleBullet projectile;
+    [SerializeField] Transform hand;
 
-    [HideInInspector]
-    public Transform muzzle;
+    Transform muzzle;
+
+    protected GunSound gunSound;
 
     private WeaponReloader reloader;
 
@@ -17,8 +19,12 @@ public class Shooter : MonoBehaviour {
     public bool canFire;
 
 	void Awake () {
-        muzzle = transform.Find("muzzle");
+
+        gunSound = transform.Find("GunSounds").GetComponent<GunSound>();
+        muzzle = transform.GetChild(0).transform.GetChild(0);
         reloader = GetComponent<WeaponReloader>();
+
+        transform.SetParent(hand);
     }
 	
 	
@@ -47,8 +53,13 @@ public class Shooter : MonoBehaviour {
             {
                 return;
             }
-            if(reloader.BulletsRemainigInClip == 0)
+            if(reloader.ammo == 0)
             {
+                return;
+            }
+            if(reloader.BulletsRemainigInClip == 0 || reloader.shotsFiredInClip == reloader.ammo)
+            {
+                reloader.Reload();
                 return;
             }
             reloader.TakeFromClip(1);
@@ -61,4 +72,6 @@ public class Shooter : MonoBehaviour {
 
         canFire = true;
     }
+
+    
 }

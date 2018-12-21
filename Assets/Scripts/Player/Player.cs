@@ -20,6 +20,8 @@ public class Player : MonoBehaviour {
     [SerializeField] float runSpeed;
     [SerializeField] MouseInput mouseControl;
 
+    public PlayerAim playerAim;
+
     private MoveController m_moveController;
     public MoveController moveController
     {
@@ -71,7 +73,21 @@ public class Player : MonoBehaviour {
         mouseInput.y = Mathf.Lerp(mouseInput.y, playerInput.mouseInput.y, 1f / mouseControl.damping.y);
         transform.Rotate(Vector3.up * mouseInput.x * mouseControl.sensitivity.x);
 
-        crosshair.LookHeight(mouseInput.y * mouseControl.sensitivity.y);
+        Vector3 targetDir = crosshair.transform.position - transform.position;
+        float angle = Vector3.Angle(targetDir, transform.forward);
+
+        Debug.Log(angle);
+
+        //playerAim.SetRotation(mouseInput.y * mouseControl.sensitivity.y);
+        playerAim.SetRotation(angle, crosshair.transform.position.y);
+
+
+
+        //crosshair.LookHeight(mouseInput.y * mouseControl.sensitivity.y);
+        crosshair.transform.Translate(new Vector3(0, mouseInput.y, 0));
+        
+        //Mathf.Clamp(crosshair.transform.position.y, -40, 40);
+        //crosshair.transform.Translate(new Vector3(0, crosshair.LookHeight(mouseInput.y), 0));
     }
 
     void Move()

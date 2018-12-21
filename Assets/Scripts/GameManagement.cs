@@ -120,9 +120,8 @@ public class GameManagement : MonoBehaviour
 
 	public void RestartGame()
 	{
-		//SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        Application.LoadLevel(Application.loadedLevel);
-	}
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 
 	public void ExitGame()
 	{

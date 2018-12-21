@@ -5,7 +5,6 @@ using System.Collections;
 public class PlayerHealth : Health
 {
 	public Slider healthSlider;
-    public Animator anim;
 
     void Awake()
 	{
@@ -13,7 +12,6 @@ public class PlayerHealth : Health
         findHealthSlider();
 
         currentHealth = startingHealth;
-        anim = GetComponent<Animator>();
 	}
     
 	public new void TakeDamage(int amount)

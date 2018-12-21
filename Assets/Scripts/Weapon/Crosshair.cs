@@ -11,14 +11,17 @@ public class Crosshair : MonoBehaviour {
 
     float lookHeight;
 
-    public void LookHeight(float value)
+    public float LookHeight(float value)
     {
         lookHeight += value;
 
-        if(lookHeight > maxAngle || lookHeight < minAngle)
+        if (lookHeight > maxAngle || lookHeight < minAngle)
         {
             lookHeight -= value;
         }
+
+        return lookHeight;
+
     }
 
     private void OnGUI()
@@ -27,4 +30,11 @@ public class Crosshair : MonoBehaviour {
         screenPosition.y = Screen.height - screenPosition.y;
         GUI.DrawTexture(new Rect(screenPosition.x, screenPosition.y - lookHeight, size, size), image);
     }
+
+    private void Update()
+    {
+        transform.position = new Vector3(transform.position.x,Mathf.Clamp(transform.position.y, -8, 8),transform.position.z);
+    }
+
+
 }

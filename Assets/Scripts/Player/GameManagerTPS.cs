@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class GameManagerTPS : MonoBehaviour {
 
-    
-    private GameObject gameObject;
+
+    private GameObject gameobject;
 
 
     private static GameManagerTPS m_instance;
@@ -16,9 +16,9 @@ public class GameManagerTPS : MonoBehaviour {
             if(m_instance == null)
             {
                 m_instance = GameObject.Find("GameManagerTPS").GetComponent<GameManagerTPS>();
-                m_instance.gameObject = m_instance.transform.gameObject;
-                m_instance.gameObject.AddComponent<InputController>();
-                m_instance.gameObject.AddComponent<Timer>();
+                m_instance.gameobject = m_instance.transform.gameObject;
+                m_instance.gameobject.AddComponent<InputController>();
+                m_instance.gameobject.AddComponent<Timer>();
                 
             }
             return m_instance;

@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class AssaultRiffle : Shooter {
 
+    [SerializeField] Transform crosshair;
+
+
     public override void Fire()
     {
         base.Fire();
 
         if(canFire)
         {
-
+            gunSound.Play(0);
         }
     }
 
@@ -20,5 +23,6 @@ public class AssaultRiffle : Shooter {
         {
             Reload();
         }
+        transform.LookAt(crosshair);
     }
 }
