@@ -76,8 +76,6 @@ public class Player : MonoBehaviour {
         Vector3 targetDir = crosshair.transform.position - transform.position;
         float angle = Vector3.Angle(targetDir, transform.forward);
 
-        Debug.Log(angle);
-
         //playerAim.SetRotation(mouseInput.y * mouseControl.sensitivity.y);
         playerAim.SetRotation(angle, crosshair.transform.position.y);
 

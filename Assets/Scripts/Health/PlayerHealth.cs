@@ -4,38 +4,31 @@ using System.Collections;
 
 public class PlayerHealth : Health
 {
-	public Slider healthSlider;
+	public Image playerHealthBar;
+	private Text playerBar;
 
-    void Awake()
+	void Awake()
 	{
+		playerBar = GameObject.Find("TextPlayerBar").GetComponent<Text>();
 		startingHealth = 200;
-        findHealthSlider();
-
-        currentHealth = startingHealth;
+		currentHealth = startingHealth;
+		MajUI();
 	}
     
 	public new void TakeDamage(int amount)
 	{
 		base.TakeDamage(amount);
-
-        findHealthSlider();
-        healthSlider.value = currentHealth;
-        
+		
 		if (currentHealth <= 0)
 		{
             isDead = true;
 		}
-    }
+		MajUI();
+	}
 
-    void findHealthSlider ()
-    {
-        if (healthSlider == null)
-        {
-            GameObject go = GameObject.Find("PlayerHealthSlider");
-            if (go != null)
-            {
-                healthSlider = go.GetComponent<Slider>();
-            }
-        }
-    }
+	void MajUI()
+	{
+		playerHealthBar.fillAmount = (float)currentHealth / startingHealth;
+		playerBar.text = currentHealth + " / " + startingHealth;
+	}
 }
