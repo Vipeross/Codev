@@ -10,7 +10,8 @@ public class BaseHealth : Health {
 	// Use this for initialization
 	void Start () {
 		baseBar = GameObject.Find("TextBaseBar").GetComponent<Text>();
-		startingHealth = 1000;
+        baseHealthBar = GameObject.Find("BaseHealthBar").GetComponent<Image>();
+        startingHealth = 1000;
 		currentHealth = startingHealth;
 		MajUI();
 	}

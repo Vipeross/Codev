@@ -1451,7 +1451,7 @@ GameObject:
   - component: {fileID: 696623518}
   - component: {fileID: 696623517}
   m_Layer: 5
-  m_Name: PlayerHealthBar
+  m_Name: BaseHealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8346,6 +8346,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2098753847}
     m_Modifications:
+    - target: {fileID: 6972346173528032915, guid: 58c30d840aba8d64fabe067c2276f09e,
+        type: 3}
+      propertyPath: m_Name
+      value: MinimapWindow
+      objectReference: {fileID: 0}
     - target: {fileID: 6972346173528032908, guid: 58c30d840aba8d64fabe067c2276f09e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8450,11 +8455,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6972346173528032915, guid: 58c30d840aba8d64fabe067c2276f09e,
-        type: 3}
-      propertyPath: m_Name
-      value: MinimapWindow
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58c30d840aba8d64fabe067c2276f09e, type: 3}
