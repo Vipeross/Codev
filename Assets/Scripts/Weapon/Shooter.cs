@@ -8,8 +8,9 @@ public class Shooter : MonoBehaviour {
     [SerializeField] float fireRate;
     [SerializeField] AssaultRiffleBullet projectile;
     [SerializeField] Transform hand;
+    [SerializeField] protected Transform crosshair;
 
-    Transform muzzle;
+    protected Transform muzzle;
 
     protected GunSound gunSound;
 
@@ -26,8 +27,9 @@ public class Shooter : MonoBehaviour {
 
         transform.SetParent(hand);
     }
-	
-	
+
+
+
 
     public void Reload()
     {

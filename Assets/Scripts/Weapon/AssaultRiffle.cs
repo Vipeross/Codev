@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AssaultRiffle : Shooter {
 
-    [SerializeField] Transform crosshair;
+    //[SerializeField] Transform crosshair;
 
 
     public override void Fire()
@@ -23,6 +23,8 @@ public class AssaultRiffle : Shooter {
         {
             Reload();
         }
-        transform.LookAt(crosshair);
+        muzzle.LookAt(crosshair);
+        Debug.Log("ça muzzle");
+        //transform.LookAt(crosshair);
     }
 }
