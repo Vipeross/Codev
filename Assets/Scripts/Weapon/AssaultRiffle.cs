@@ -24,7 +24,7 @@ public class AssaultRiffle : Shooter {
             Reload();
         }
         muzzle.LookAt(crosshair);
-        Debug.Log("ça muzzle");
+        
         //transform.LookAt(crosshair);
     }
 }

@@ -13,6 +13,7 @@ public class WeaponReloader : MonoBehaviour {
 
     public int ammo;
     public int shotsFiredInClip;
+    public int bulletsInClip;
     bool isReloading;
 
     private Text ammos;
@@ -23,6 +24,7 @@ public class WeaponReloader : MonoBehaviour {
     {
         gunSound = transform.Find("GunSounds").GetComponent<GunSound>();
         ammo = maxAmmo;
+        bulletsInClip = clipSize;
         shotsFiredInClip = 0;
 
         ammos = GameObject.Find("Ammo").GetComponent<Text>();
@@ -35,15 +37,8 @@ public class WeaponReloader : MonoBehaviour {
     public int BulletsRemainigInClip
     {
         get
-        {   
-            if(ammo == 0)
-            {
-                return 0;
-            }
-            else
-            {
-                return clipSize - shotsFiredInClip;
-            }
+        {
+            return bulletsInClip;
             
         }
     }
@@ -66,18 +61,38 @@ public class WeaponReloader : MonoBehaviour {
     {
         gunSound.Play(1);
         isReloading = false;
+
+
+        if (ammo < clipSize)
+        {
+            bulletsInClip = ammo;
+            ammoInClip.text = ammo.ToString();
+
+        }
+        else
+        {
+            bulletsInClip = clipSize;
+            ammoInClip.text = clipSize.ToString();
+
+        }
+
+
         ammo -= shotsFiredInClip;
         shotsFiredInClip = 0;
 
         if (ammo <= 0)
             ammo = 0;
+
         ammos.text = ammo.ToString();
-        ammoInClip.text = BulletsRemainigInClip.ToString();
+
+        
+        
     }
 
     public void TakeFromClip(int amount)
     {
         shotsFiredInClip += amount;
+        bulletsInClip -= amount;
         ammoInClip.text = BulletsRemainigInClip.ToString();
     }
 }

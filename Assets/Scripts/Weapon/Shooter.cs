@@ -55,11 +55,11 @@ public class Shooter : MonoBehaviour {
             {
                 return;
             }
-            if(reloader.ammo == 0)
+            if(reloader.ammo == 0 && reloader.BulletsRemainigInClip == 0)
             {
                 return;
             }
-            if(reloader.BulletsRemainigInClip == 0 || reloader.shotsFiredInClip == reloader.ammo)
+            if(reloader.BulletsRemainigInClip == 0)
             {
                 reloader.Reload();
                 return;

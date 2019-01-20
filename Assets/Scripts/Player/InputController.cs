@@ -10,6 +10,7 @@ public class InputController : MonoBehaviour {
     public bool fire1;
     public bool reload;
     public bool isRunning;
+    public bool jump;
 
     private void Update()
     {
@@ -19,5 +20,6 @@ public class InputController : MonoBehaviour {
         fire1 = Input.GetButton("Fire1");
         reload = Input.GetKey(KeyCode.R);
         isRunning = Input.GetKey(KeyCode.LeftShift);
+        jump = Input.GetKey(KeyCode.Space);
     }
 }

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f4b76f67fb4a0884b877077633050b7d
+guid: 01f700df990b1af48b18e877ba9144f5
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -135,7 +135,7 @@ ModelImporter:
     400126: mixamorig:Spine1
     400128: mixamorig:Spine2
     400130: //RootNode
-    7400000: riffle jump
+    7400000: run backward
     9500000: //RootNode
   externalObjects: {}
   materials:
@@ -166,18 +166,18 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: riffle jump
+      name: run backward
       takeName: mixamo.com
       firstFrame: 0
-      lastFrame: 18
+      lastFrame: 16
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
+      loopTime: 1
+      loopBlend: 1
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
