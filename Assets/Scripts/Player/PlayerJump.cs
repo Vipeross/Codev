@@ -13,53 +13,35 @@ public class PlayerJump : MonoBehaviour
     private Rigidbody rigidbody;
     private CapsuleCollider collider;
     private Animator animator;
+    private float distanceToGround;
 
     void Start()
     {
-        isGrounded = true;
+        isGrounded = false;
+
         rigidbody = GetComponent<Rigidbody>();
         collider = GetComponent<CapsuleCollider>();
         animator = GetComponent<Animator>();
 
+        distanceToGround = collider.bounds.extents.y;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (isGrounded != Physics.Raycast(transform.position, -Vector3.up, distanceToGround + 0.01f))
+            changeJumpAnimation();
+
+        isGrounded = Physics.Raycast(transform.position, -Vector3.up, distanceToGround + 0.01f);
+
         if (GameManagerTPS.instance.inputController.jump && isGrounded)
         {
             rigidbody.AddForce(Vector3.up * intensity, ForceMode.Impulse);
         }
     }
-
-    private void OnCollisionEnter(Collision collision)
+   
+    private void changeJumpAnimation ()
     {
-        if(collision.gameObject.tag == "Ground")
-        {
-            isGrounded = true;
-        }
-        
-        animator.SetBool("IsGrounded", isGrounded);
+        animator.SetBool("IsGrounded", !isGrounded);
     }
-
-    public bool IsGrounded()
-    {
-        //return Physics.CheckCapsule(collider.bounds.center, new Vector3(collider.bounds.center.x, collider.bounds.min.y, collider.bounds.center.z), collider.radius * 0.9f);
-        return isGrounded;
-    }
-
-    
-
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.gameObject.tag == "Ground")
-        {
-            isGrounded = false;
-        }
-        animator.SetBool("IsGrounded", isGrounded);
-        
-
-    }
-
-
 }
