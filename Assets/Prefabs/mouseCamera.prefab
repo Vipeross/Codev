@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 92149322830231516}
   - component: {fileID: 124872396023242892}
   - component: {fileID: 81236510894689128}
-  - component: {fileID: 114839643125856844}
+  - component: {fileID: 2383400653739828113}
   m_Layer: 0
   m_Name: mouseCamera
   m_TagString: MainCamera
@@ -66,7 +66,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 1591
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -102,7 +102,7 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1517075334253240}
   m_Enabled: 1
---- !u!114 &114839643125856844
+--- !u!114 &2383400653739828113
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -111,12 +111,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1517075334253240}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c42b757ed5c1b3e4e9fa618d1d1a19f6, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fe2c885804f8a54e80589f2e240eadd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  rotateSpeed: 3
-  verticalOffset: 1
+  cameraOffset: {x: -0.2, y: 0.1, z: -3.5}
+  damping: 5
+  crosshair: {fileID: 0}
 --- !u!1 &9192465426797519724
 GameObject:
   m_ObjectHideFlags: 0
@@ -127,7 +127,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5906123581346925522}
   - component: {fileID: 2257765341034739992}
-  - component: {fileID: 8440213290132246377}
   m_Layer: 0
   m_Name: MinimapCamera
   m_TagString: Untagged
@@ -191,11 +190,3 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &8440213290132246377
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9192465426797519724}
-  m_Enabled: 1

@@ -8,8 +8,9 @@ public class Shooter : MonoBehaviour {
     [SerializeField] float fireRate;
     [SerializeField] AssaultRiffleBullet projectile;
     [SerializeField] Transform hand;
+    [SerializeField] protected Transform crosshair;
 
-    Transform muzzle;
+    protected Transform muzzle;
 
     protected GunSound gunSound;
 
@@ -26,8 +27,9 @@ public class Shooter : MonoBehaviour {
 
         transform.SetParent(hand);
     }
-	
-	
+
+
+
 
     public void Reload()
     {
@@ -53,11 +55,11 @@ public class Shooter : MonoBehaviour {
             {
                 return;
             }
-            if(reloader.ammo == 0)
+            if(reloader.ammo == 0 && reloader.BulletsRemainigInClip == 0)
             {
                 return;
             }
-            if(reloader.BulletsRemainigInClip == 0 || reloader.shotsFiredInClip == reloader.ammo)
+            if(reloader.BulletsRemainigInClip == 0)
             {
                 reloader.Reload();
                 return;

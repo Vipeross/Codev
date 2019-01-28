@@ -20,6 +20,8 @@ public class Player : MonoBehaviour {
     [SerializeField] float runSpeed;
     [SerializeField] MouseInput mouseControl;
 
+    Transform aimPivot;
+
     public PlayerAim playerAim;
 
     private MoveController m_moveController;
@@ -59,6 +61,8 @@ public class Player : MonoBehaviour {
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
         }
+
+        aimPivot = transform.Find("aimPivot");
 	}
 
 	void Update ()
@@ -73,11 +77,13 @@ public class Player : MonoBehaviour {
         mouseInput.y = Mathf.Lerp(mouseInput.y, playerInput.mouseInput.y, 1f / mouseControl.damping.y);
         transform.Rotate(Vector3.up * mouseInput.x * mouseControl.sensitivity.x);
 
-        Vector3 targetDir = crosshair.transform.position - transform.position;
-        float angle = Vector3.Angle(targetDir, transform.forward);
+        Vector3 targetDir = crosshair.transform.position - aimPivot.position;
+        //float angle = Vector3.Angle(targetDir, aimPivot.forward);
+        float angle = Vector3.Angle(targetDir, aimPivot.forward);
 
+       
         //playerAim.SetRotation(mouseInput.y * mouseControl.sensitivity.y);
-        playerAim.SetRotation(angle, crosshair.transform.position.y);
+        playerAim.SetRotation(angle, crosshair.transform.position.y,aimPivot.position.y);
 
 
 

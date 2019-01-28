@@ -8,7 +8,7 @@ public class AssaultRiffleBullet : Bullet {
 
     private void Start()
     {
-        speed = 15.0f;
+        speed = 50.0f;
         timeToLive = 5.0f;
     }
 

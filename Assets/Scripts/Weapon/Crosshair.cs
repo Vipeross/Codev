@@ -8,6 +8,7 @@ public class Crosshair : MonoBehaviour {
     [SerializeField] int size;
     [SerializeField] float maxAngle;
     [SerializeField] float minAngle;
+    [SerializeField] Transform aimPivot;
 
     float lookHeight;
 
@@ -33,7 +34,7 @@ public class Crosshair : MonoBehaviour {
 
     private void Update()
     {
-        transform.position = new Vector3(transform.position.x,Mathf.Clamp(transform.position.y, -8, 8),transform.position.z);
+        transform.position = new Vector3(transform.position.x,Mathf.Clamp(transform.position.y, aimPivot.position.y - 10, aimPivot.position.y + 10),transform.position.z);
     }
 
 

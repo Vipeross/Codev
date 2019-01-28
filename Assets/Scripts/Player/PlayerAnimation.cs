@@ -7,6 +7,7 @@ public class PlayerAnimation : MonoBehaviour {
     Animator animator;
     [SerializeField] WeaponReloader weaponReloader;
 
+
     private PlayerAim m_playerAim;
     private PlayerAim PlayerAim
     {
@@ -20,8 +21,10 @@ public class PlayerAnimation : MonoBehaviour {
         }
     }
 
-	// Use this for initialization
-	void Awake () {
+    
+
+    // Use this for initialization
+    void Awake () {
         animator = GetComponentInChildren<Animator>();
 	}
 	
@@ -33,5 +36,7 @@ public class PlayerAnimation : MonoBehaviour {
 
         animator.SetFloat("AimAngle", PlayerAim.GetAngle());
         animator.SetBool("IsReloading", weaponReloader.IsReloading());
+
+        
 	}
 }

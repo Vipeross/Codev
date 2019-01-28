@@ -7,16 +7,16 @@ public class PlayerAim : MonoBehaviour
 
     private float rotation;
 
-    public void SetRotation(float amount, float crosshairPosition)
+    public void SetRotation(float angle, float crosshairPosition, float aimPivotPosition)
     {
-        //transform.eulerAngles = new Vector3(transform.eulerAngles.x - amount, transform.eulerAngles.y, transform.eulerAngles.z);
-        if(crosshairPosition >= 0f)
+        
+        if(crosshairPosition >= aimPivotPosition)
         {
-            rotation = -amount;
+            rotation = -angle;
         }
         else
         {
-            rotation = amount;
+            rotation = angle;
         }
         
     }
