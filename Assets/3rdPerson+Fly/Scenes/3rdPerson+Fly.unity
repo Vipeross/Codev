@@ -8330,6 +8330,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2098753847}
     m_Modifications:
+    - target: {fileID: 6972346173528032915, guid: 58c30d840aba8d64fabe067c2276f09e,
+        type: 3}
+      propertyPath: m_Name
+      value: MinimapWindow
+      objectReference: {fileID: 0}
     - target: {fileID: 6972346173528032908, guid: 58c30d840aba8d64fabe067c2276f09e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8434,11 +8439,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6972346173528032915, guid: 58c30d840aba8d64fabe067c2276f09e,
-        type: 3}
-      propertyPath: m_Name
-      value: MinimapWindow
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58c30d840aba8d64fabe067c2276f09e, type: 3}
@@ -9714,6 +9714,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.y
       value: 1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 958614241791550687, guid: 46eaaf0a380263f4cbf81ecf2c48d510,
+        type: 3}
+      propertyPath: intensity
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46eaaf0a380263f4cbf81ecf2c48d510, type: 3}
