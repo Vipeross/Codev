@@ -52,12 +52,10 @@ public abstract class EnemyAI : MonoBehaviour {
             if (Physics.Raycast(weaponFireStart.transform.position, objective.transform.position, out hit, enemy.shootingRange+100))
             {
                 Debug.DrawLine(weapon.transform.position, objective.transform.position, Color.blue);
-                Debug.Log("Did Hit : " + hit.collider.gameObject.name);
             }
             else
             {
                 Debug.DrawLine(weapon.transform.position, objective.transform.position, Color.red);
-                Debug.Log("Did not Hit : " + hit.collider.gameObject.name);
             }
         }
 

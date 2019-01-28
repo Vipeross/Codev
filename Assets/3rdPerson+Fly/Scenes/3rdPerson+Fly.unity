@@ -9720,5 +9720,10 @@ PrefabInstance:
       propertyPath: maxAmmo
       value: 4000
       objectReference: {fileID: 0}
+    - target: {fileID: 958614241791550687, guid: 46eaaf0a380263f4cbf81ecf2c48d510,
+        type: 3}
+      propertyPath: intensity
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46eaaf0a380263f4cbf81ecf2c48d510, type: 3}
