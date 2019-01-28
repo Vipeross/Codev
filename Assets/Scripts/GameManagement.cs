@@ -66,7 +66,7 @@ public class GameManagement : MonoBehaviour
         // Gestion HUD
         string minutes = Mathf.Floor(gameTime / 60).ToString("00");
         string seconds = (gameTime % 60).ToString("00");
-        enemyCount.text = "Ennemis Restants : " + enemiesLeft + "/" + enemiesTotal;
+        enemyCount.text = "Spawn Ennemies Restant : " + enemiesLeft + "/" + enemiesTotal;
         waveHUD.text = "Vague " + waveNumber + "/" + waves;
         waveTimer.text = minutes + ":" + seconds;
         rate = 1.0f / (0.05f * waveNumber);
@@ -78,7 +78,6 @@ public class GameManagement : MonoBehaviour
 			GameOver("Base détruite");
 		else if (playerObject.GetComponent<PlayerHealth>().Dead())
 			GameOver("Joueur mort");
-
 	}
 
 	void SwitchCursor(bool flag)
@@ -103,20 +102,40 @@ public class GameManagement : MonoBehaviour
             timeSinceLastSpawn = 0;
             enemiesLeft--;
         }
-        if (enemiesLeft == 0 && waveNumber <= waves && gameTime <= 0.1f)
+        if (enemiesLeft == 0 && gameTime <= 0.1f)
         {
-            waveNumber++;
-            WaveUpdate();
-        }
+            if(waveNumber == waves)
+            {
+                Gamewin();
+            }
+            else 
+            {
+                waveNumber++;
+                WaveUpdate();
+            }
+        }             
+    }
+
+    void Gamewin()
+    {
+        finalText.text = "Victoire !";
+        finalText.color = Color.green;
+        endGame();
     }
 
 	void GameOver(string who)
 	{
-		Time.timeScale = 0;
-		screenPanel.SetActive(true);
 		finalText.text = "Défaite\n" + who;
-		SwitchCursor(true);
+        finalText.color = Color.red;
+        endGame();
 	}
+
+    void endGame()
+    {
+        Time.timeScale = 0;
+		screenPanel.SetActive(true);
+		SwitchCursor(true);
+    }
 
 	public void RestartGame()
 	{
