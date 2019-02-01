@@ -4,13 +4,15 @@
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: Blockout_Theme_1_Foliage
   m_Shader: {fileID: 4800000, guid: 2fbbbe10715d8a34795c64c62d82623e, type: 3}
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 1
+  m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
@@ -80,5 +82,5 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.85882354, g: 0.89411765, b: 0.93333334, a: 1}
+    - _Color: {r: 0.65881985, g: 0.990566, b: 0.7624905, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

@@ -33,7 +33,7 @@ public class Bullet : MonoBehaviour {
 
         // Si la balle touche un obstacle on la détruit
         // Attention : si l'objet touché est l'arme de l'ennemi en elle-même, on ne la détruit pas
-        if (!other.name.Equals("Weapon"))
+        if (!other.name.Equals("Weapon") && !other.isTrigger)
         {
             Destroy(gameObject);
         }

@@ -227,7 +227,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 1359948647173200, guid: 706b917d1dfb3f4469594df9dc3f76a7,
     type: 3}
-  shootingRange: 5
+  shootingRange: 15
   fireRate: 1.5
   health: 200
 --- !u!114 &114712388259046284
