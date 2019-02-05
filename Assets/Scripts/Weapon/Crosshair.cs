@@ -34,7 +34,7 @@ public class Crosshair : MonoBehaviour {
 
     private void Update()
     {
-        transform.position = new Vector3(transform.position.x,Mathf.Clamp(transform.position.y, aimPivot.position.y - 10, aimPivot.position.y + 10),transform.position.z);
+        transform.position = new Vector3(transform.position.x,Mathf.Clamp(transform.position.y, aimPivot.position.y - 13, aimPivot.position.y + 13),transform.position.z);
     }
 
 

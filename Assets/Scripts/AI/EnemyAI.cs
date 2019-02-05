@@ -41,6 +41,7 @@ public abstract class EnemyAI : MonoBehaviour {
         transform.LookAt(objective.GetComponent<Collider>().bounds.center);
         weapon.transform.LookAt(objective.GetComponent<Collider>().bounds.center);
 
+        
         // Si on est à distance de shoot l'objectif, on arrête de bouger
         if (Vector3.Distance(transform.position, objective.transform.position) < enemy.shootingRange)
             agent.SetDestination(transform.position);

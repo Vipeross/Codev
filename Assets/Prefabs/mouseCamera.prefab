@@ -114,8 +114,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fe2c885804f8a54e80589f2e240eadd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraOffset: {x: -0.2, y: 0.1, z: -3.5}
-  damping: 5
+  cameraOffset: {x: 0.5, y: 0.1, z: -3.5}
+  damping: 10
   crosshair: {fileID: 0}
 --- !u!1 &9192465426797519724
 GameObject:

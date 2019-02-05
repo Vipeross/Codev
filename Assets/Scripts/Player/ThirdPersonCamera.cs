@@ -25,7 +25,7 @@ public class ThirdPersonCamera : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        Vector3 targetposition = cameraLookTarget.position + player.transform.forward * cameraOffset.z + new Vector3(0,-crosshair.position.y/2,0) * cameraOffset.y + player.transform.right * cameraOffset.x;
+        Vector3 targetposition = cameraLookTarget.position + player.transform.forward * cameraOffset.z + new Vector3(0,-crosshair.position.y,0) * cameraOffset.y + player.transform.right * cameraOffset.x;
         
         Quaternion targetRotation = Quaternion.LookRotation(cameraLookTarget.position - targetposition, Vector3.up);
 
