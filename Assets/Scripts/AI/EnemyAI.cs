@@ -49,14 +49,14 @@ public abstract class EnemyAI : MonoBehaviour {
             RaycastHit hit;
 
             // Does the ray intersect any objects excluding the player layer
-            if (Physics.Raycast(weaponFireStart.transform.position, objective.transform.position, out hit, enemy.shootingRange+100))
+            if (Physics.Raycast(weaponFireStart.transform.position, objective.transform.position, out hit, enemy.shootingRange))
             {
-                Debug.DrawLine(weapon.transform.position, objective.transform.position, Color.blue);
+                Debug.DrawLine(weaponFireStart.transform.position, objective.transform.position, Color.blue);
                 Debug.Log("Did Hit : " + hit.collider.gameObject.name);
             }
             else
             {
-                Debug.DrawLine(weapon.transform.position, objective.transform.position, Color.red);
+                Debug.DrawLine(weaponFireStart.transform.position, objective.transform.position, Color.red);
                 Debug.Log("Did not Hit : " + hit.collider.gameObject.name);
             }
         }
@@ -71,7 +71,7 @@ public abstract class EnemyAI : MonoBehaviour {
         timeSinceLastFire += Time.deltaTime;
 
         // Si on est à distance pour shooter et que notre fire rate est ok
-        if (Vector3.Distance(transform.position, objective.transform.position) < enemy.shootingRange && timeSinceLastFire >= enemy.fireRate)
+        if (Vector3.Distance(weaponFireStart.transform.position, objective.transform.position) < enemy.shootingRange && timeSinceLastFire >= enemy.fireRate)
         {
             Instantiate(enemy.bulletPrefab, weaponFireStart.transform.position, weapon.transform.rotation);
 

@@ -10,10 +10,8 @@ public class Player : MonoBehaviour {
     [System.Serializable]
     public class MouseInput
     {
-        public Vector2 damping;
         public Vector2 sensitivity;
         public bool lockMouse;
-        
     }
 
     [SerializeField] float walkSpeed;
@@ -73,8 +71,8 @@ public class Player : MonoBehaviour {
 
     private void LookAround()
     {
-        mouseInput.x = Mathf.Lerp(mouseInput.x, playerInput.mouseInput.x, 1f / mouseControl.damping.x);
-        mouseInput.y = Mathf.Lerp(mouseInput.y, playerInput.mouseInput.y, 1f / mouseControl.damping.y);
+        mouseInput.x = playerInput.mouseInput.x;
+        mouseInput.y = playerInput.mouseInput.y;
         transform.Rotate(Vector3.up * mouseInput.x * mouseControl.sensitivity.x);
 
         Vector3 targetDir = crosshair.transform.position - aimPivot.position;
@@ -83,9 +81,7 @@ public class Player : MonoBehaviour {
 
        
         //playerAim.SetRotation(mouseInput.y * mouseControl.sensitivity.y);
-        playerAim.SetRotation(angle, crosshair.transform.position.y,aimPivot.position.y);
-
-
+        playerAim.SetRotation(angle, crosshair.transform.position.y, aimPivot.position.y);
 
         //crosshair.LookHeight(mouseInput.y * mouseControl.sensitivity.y);
         crosshair.transform.Translate(new Vector3(0, mouseInput.y, 0));

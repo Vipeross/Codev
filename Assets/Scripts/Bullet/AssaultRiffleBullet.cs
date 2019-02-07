@@ -8,8 +8,8 @@ public class AssaultRiffleBullet : Bullet {
 
     private void Start()
     {
-        speed = 50.0f;
-        timeToLive = 5.0f;
+        speed = 80.0f;
+        timeToLive = 2.0f;
     }
 
     protected override void OnTriggerEnter(Collider other)
