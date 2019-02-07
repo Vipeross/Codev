@@ -59,7 +59,7 @@ public abstract class EnemyAI : MonoBehaviour {
             else
             {
                 Debug.DrawLine(weaponFireStart.transform.position, objective.transform.position, Color.red);
-                Debug.Log("Did not Hit : " + hit.collider.gameObject.name);
+                //Debug.Log("Did not Hit : " + hit.collider.gameObject.name);
             }
         }
 

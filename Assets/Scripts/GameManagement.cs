@@ -16,8 +16,15 @@ public class GameManagement : MonoBehaviour
     private int numberOfEnemyPrefab;
     private int enemiesTotal = 0;
     private int enemiesLeft = 0;
-    private int waveNumber = 1;
+    private int waveNumber = 0;
     private float rate;
+
+    public float timeBeforeFirstWave;
+    public GameObject timeBeforeFirstWaveText;
+    public float advertDuration;
+    private float timeBeforeHidingAdvert;
+    public GameObject newWaveIncomingText;
+    public AudioClip newWaveSound;
 
     private GameObject baseObject;
 	private GameObject playerObject;
@@ -27,7 +34,7 @@ public class GameManagement : MonoBehaviour
     private Text waveHUD;
     public GameObject screenPanel;
 	public Text finalText;
-    private Text waveTimer;
+    public GameObject waveTimer;
     public int waves;
     
 	// Use this for initialization
@@ -38,18 +45,15 @@ public class GameManagement : MonoBehaviour
         HUD.SetActive(true);
         enemyCount = GameObject.Find("EnemyCount").GetComponent<Text>();
         waveHUD = GameObject.Find("Wave").GetComponent<Text>();
-        waveTimer = GameObject.Find("WaveTimer").GetComponent<Text>();
         baseObject = GameObject.FindGameObjectWithTag("Base");
         playerObject = GameObject.FindGameObjectWithTag("Player");
+
+        timeBeforeFirstWaveText.SetActive(true);
 
         SwitchCursor(false);
 
         numberOfSpawns = GameObject.FindGameObjectsWithTag("Respawn").Length;
         numberOfEnemyPrefab = EnemyPrefabs.Length;
-        rate = 1.0f / (0.05f * waveNumber);
-        if (rate > 10)
-            rate = 10.0f;
-        WaveUpdate();
     }
 
     // Update is called once per frame
@@ -61,6 +65,9 @@ public class GameManagement : MonoBehaviour
         if ((Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1)) && Cursor.lockState != CursorLockMode.Locked && Cursor.visible == true)
 			SwitchCursor(false);
 
+        BeforeFirstWave();
+        AdvertManagement();
+
         spawn();
 
         // Gestion HUD
@@ -68,7 +75,7 @@ public class GameManagement : MonoBehaviour
         string seconds = (gameTime % 60).ToString("00");
         enemyCount.text = "Spawn Ennemies Restant : " + enemiesLeft + "/" + enemiesTotal;
         waveHUD.text = "Vague " + waveNumber + "/" + waves;
-        waveTimer.text = minutes + ":" + seconds;
+        waveTimer.GetComponent<Text>().text = "Temps avant la prochaine vague : " + minutes + ":" + seconds;
         rate = 1.0f / (0.05f * waveNumber);
         if (rate > 10)
             rate = 10.0f;
@@ -80,7 +87,39 @@ public class GameManagement : MonoBehaviour
 			GameOver("Joueur mort");
 	}
 
-	void SwitchCursor(bool flag)
+    void BeforeFirstWave ()
+    {
+        if (timeBeforeFirstWave > 0.0f)
+        {
+            timeBeforeFirstWave = Mathf.Max(0.0f, timeBeforeFirstWave - Time.deltaTime);
+            timeBeforeFirstWaveText.GetComponent<Text>().text = "La partie commence dans " + Mathf.Floor(timeBeforeFirstWave) + "s !";
+        }
+        else
+        {
+            timeBeforeFirstWaveText.SetActive(false);
+
+            if (waveNumber == 0)
+                WaveUpdate();
+        }
+    }
+
+    void AdvertManagement ()
+    {
+        if (timeBeforeHidingAdvert > 0.0f)
+            timeBeforeHidingAdvert = Math.Max(0.0f, timeBeforeHidingAdvert - Time.deltaTime);
+        else
+        {
+            newWaveIncomingText.SetActive(false);
+        }
+    }
+
+    void ShowAdvert (GameObject toShow)
+    {
+        timeBeforeHidingAdvert = advertDuration;
+        toShow.SetActive(true);
+    }
+    
+    void SwitchCursor(bool flag)
 	{
 		Cursor.visible = flag;
 		Cursor.lockState = (flag) ? CursorLockMode.None : CursorLockMode.Locked;
@@ -88,32 +127,30 @@ public class GameManagement : MonoBehaviour
 
     void spawn()
     {
-        timeSinceLastSpawn += Time.deltaTime;
-        gameTime -= Time.deltaTime;
-        
-        if (timeSinceLastSpawn >= rate && enemiesLeft > 0)
+        if (timeBeforeFirstWave == 0.0f)
         {
-            int chosenSpawn = Random.Range(0, numberOfSpawns);
-            int chosenEnemyPrefab = Random.Range(0, numberOfEnemyPrefab);
+            timeSinceLastSpawn += Time.deltaTime;
+            gameTime -= Time.deltaTime;
 
-            GameObject spawner = GameObject.FindGameObjectsWithTag("Respawn")[chosenSpawn];
-            Instantiate(EnemyPrefabs[chosenEnemyPrefab], spawner.transform.position, spawner.transform.rotation);
+            if (timeSinceLastSpawn >= rate && enemiesLeft > 0)
+            {
+                int chosenSpawn = Random.Range(0, numberOfSpawns);
+                int chosenEnemyPrefab = Random.Range(0, numberOfEnemyPrefab);
 
-            timeSinceLastSpawn = 0;
-            enemiesLeft--;
+                GameObject spawner = GameObject.FindGameObjectsWithTag("Respawn")[chosenSpawn];
+                Instantiate(EnemyPrefabs[chosenEnemyPrefab], spawner.transform.position, spawner.transform.rotation);
+
+                timeSinceLastSpawn = 0;
+                enemiesLeft--;
+            }
+            if (enemiesLeft == 0 && gameTime <= 0.1f)
+            {
+                if (waveNumber == waves)
+                    Gamewin();
+                else
+                    WaveUpdate();
+            }
         }
-        if (enemiesLeft == 0 && gameTime <= 0.1f)
-        {
-            if(waveNumber == waves)
-            {
-                Gamewin();
-            }
-            else 
-            {
-                waveNumber++;
-                WaveUpdate();
-            }
-        }             
     }
 
     void Gamewin()
@@ -149,6 +186,11 @@ public class GameManagement : MonoBehaviour
 
     void WaveUpdate()
     {
+        ShowAdvert(newWaveIncomingText);
+        GetComponent<AudioSource>().PlayOneShot(newWaveSound);
+
+        waveNumber++;
+
         enemiesTotal = 3 * waveNumber + Random.Range(0, waveNumber / 2);
         enemiesLeft = enemiesTotal;
         waveDuration = enemiesTotal * (Math.Max(8.0f, rate)) + 20;
