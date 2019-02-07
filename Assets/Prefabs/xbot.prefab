@@ -2930,6 +2930,7 @@ MonoBehaviour:
   clipSize: 20
   ammo: 0
   shotsFiredInClip: 0
+  bulletsInClip: 0
 --- !u!1 &3685678935234894345
 GameObject:
   m_ObjectHideFlags: 0
@@ -3015,7 +3016,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3685678935483708133}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.461, z: 1.17}
+  m_LocalPosition: {x: 0, y: 1.6, z: 1.17}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4466376811879942}
