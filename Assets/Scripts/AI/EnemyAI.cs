@@ -38,12 +38,12 @@ public abstract class EnemyAI : MonoBehaviour {
 
     void movement ()
     {
-        transform.LookAt(objective.GetComponent<Collider>().bounds.center);
-        weapon.transform.LookAt(objective.GetComponent<Collider>().bounds.center);
+        transform.LookAt(objective.GetComponent<CapsuleCollider>().bounds.center);
+        weapon.transform.LookAt(objective.GetComponent<CapsuleCollider>().bounds.center);
 
 
         // Si on est à distance de shoot l'objectif
-        if (Vector3.Distance(weaponFireStart.transform.position, objective.transform.position) < enemy.shootingRange)
+        if (Vector3.Distance(weaponFireStart.transform.position, objective.GetComponent<CapsuleCollider>().bounds.center) < enemy.shootingRange)
         {
 
             agent.SetDestination(transform.position);
@@ -51,14 +51,14 @@ public abstract class EnemyAI : MonoBehaviour {
             RaycastHit hit;
 
             // Does the ray intersect any objects excluding the player layer
-            if (Physics.Raycast(weaponFireStart.transform.position, objective.transform.position, out hit, enemy.shootingRange))
+            if (Physics.Raycast(weaponFireStart.transform.position, objective.GetComponent<CapsuleCollider>().bounds.center, out hit, enemy.shootingRange))
             {
-                Debug.DrawLine(weaponFireStart.transform.position, objective.transform.position, Color.blue);
+                Debug.DrawLine(weaponFireStart.transform.position, objective.GetComponent<CapsuleCollider>().bounds.center, Color.blue);
                 Debug.Log("Did Hit : " + hit.collider.gameObject.name);
             }
             else
             {
-                Debug.DrawLine(weaponFireStart.transform.position, objective.transform.position, Color.red);
+                Debug.DrawLine(weaponFireStart.transform.position, objective.GetComponent<CapsuleCollider>().bounds.center, Color.red);
                 //Debug.Log("Did not Hit : " + hit.collider.gameObject.name);
             }
         }
@@ -73,7 +73,7 @@ public abstract class EnemyAI : MonoBehaviour {
         timeSinceLastFire += Time.deltaTime;
 
         // Si on est à distance pour shooter et que notre fire rate est ok
-        if (Vector3.Distance(weaponFireStart.transform.position, objective.transform.position) < enemy.shootingRange && timeSinceLastFire >= enemy.fireRate)
+        if (Vector3.Distance(weaponFireStart.transform.position, objective.GetComponent<CapsuleCollider>().bounds.center) < enemy.shootingRange && timeSinceLastFire >= enemy.fireRate)
         {
             Instantiate(enemy.bulletPrefab, weaponFireStart.transform.position, weapon.transform.rotation);
 

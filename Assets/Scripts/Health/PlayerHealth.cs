@@ -10,7 +10,7 @@ public class PlayerHealth : Health
 	void Awake()
 	{
 		playerBar = GameObject.Find("TextPlayerBar").GetComponent<Text>();
-		startingHealth = 5000;
+		startingHealth = 300;
 		currentHealth = startingHealth;
 		MajUI();
 	}
