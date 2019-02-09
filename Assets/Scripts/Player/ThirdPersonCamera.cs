@@ -29,7 +29,7 @@ public class ThirdPersonCamera : MonoBehaviour {
         
         Quaternion targetRotation = Quaternion.LookRotation(cameraLookTarget.position - targetposition, Vector3.up);
 
-        transform.position = Vector3.Lerp(transform.position, targetposition, damping * Time.deltaTime);
+        transform.position = targetposition;
         transform.LookAt(crosshair);
         //transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, damping * Time.deltaTime);
 
