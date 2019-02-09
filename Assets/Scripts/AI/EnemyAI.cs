@@ -38,7 +38,7 @@ public abstract class EnemyAI : MonoBehaviour {
 
     void movement ()
     {
-        transform.LookAt(objective.GetComponent<CapsuleCollider>().bounds.center);
+        //transform.LookAt(objective.GetComponent<CapsuleCollider>().bounds.center);
         weapon.transform.LookAt(objective.GetComponent<CapsuleCollider>().bounds.center);
 
 
