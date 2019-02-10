@@ -50,7 +50,7 @@ public class WeaponReloader : MonoBehaviour {
 
     public void Reload()
     {
-        
+        gunSound.Play(1);
         if (isReloading)
             return;
         isReloading = true;
