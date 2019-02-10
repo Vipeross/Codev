@@ -242,7 +242,7 @@ Animator:
   m_GameObject: {fileID: 6202336197726130780}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 1964687431c6c8e4eb72f1e74c755cb2, type: 3}
-  m_Controller: {fileID: 9100000, guid: f404324b2ae8cdd41846d24839b796f0, type: 2}
+  m_Controller: {fileID: 9100000, guid: 19f6278ae89a80e4f8e4ec162e76c2b8, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -519,6 +519,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.009771935
       objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: 1964687431c6c8e4eb72f1e74c755cb2, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: 1964687431c6c8e4eb72f1e74c755cb2, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 19f6278ae89a80e4f8e4ec162e76c2b8, type: 2}
     - target: {fileID: 13700000, guid: 1964687431c6c8e4eb72f1e74c755cb2, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

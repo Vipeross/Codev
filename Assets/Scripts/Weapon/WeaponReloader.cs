@@ -55,11 +55,12 @@ public class WeaponReloader : MonoBehaviour {
             return;
         isReloading = true;
         GameManagerTPS.instance.timer.Add(executeReload, reloadTime);
+        gunSound.Play(1);
     }
 
     private void executeReload()
     {
-        gunSound.Play(1);
+        
         isReloading = false;
 
 
