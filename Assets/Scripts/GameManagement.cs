@@ -25,7 +25,9 @@ public class GameManagement : MonoBehaviour
     private float timeBeforeHidingAdvert;
     public GameObject newWaveIncomingText;
     public AudioClip newWaveSound;
-
+    public AudioClip gameOverSound;
+    public AudioClip gameWinSound;
+    
     private GameObject baseObject;
 	private GameObject playerObject;
 
@@ -157,6 +159,8 @@ public class GameManagement : MonoBehaviour
     {
         finalText.text = "Victoire !";
         finalText.color = Color.green;
+        if(!screenPanel.activeSelf)
+            GetComponent<AudioSource>().PlayOneShot(gameWinSound);
         endGame();
     }
 
@@ -164,6 +168,8 @@ public class GameManagement : MonoBehaviour
 	{
 		finalText.text = "Défaite\n" + who;
         finalText.color = Color.red;
+        if(!screenPanel.activeSelf)
+            GetComponent<AudioSource>().PlayOneShot(gameOverSound);
         endGame();
 	}
 
