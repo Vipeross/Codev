@@ -27,6 +27,7 @@ public class GameManagement : MonoBehaviour
     public AudioClip newWaveSound;
     public AudioClip gameOverSound;
     public AudioClip gameWinSound;
+    public AudioClip ambientSong;
     
     private GameObject baseObject;
 	private GameObject playerObject;
@@ -42,6 +43,7 @@ public class GameManagement : MonoBehaviour
 	// Use this for initialization
 	void Start()
     {
+        //GetComponent<AudioSource>().PlayOneShot(ambientSong);
         Time.timeScale = 1.0f;
         // UI
         HUD.SetActive(true);
